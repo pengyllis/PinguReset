@@ -1,7 +1,4 @@
-# now only works with 1920x1080 fullscreen gui scale 2 no fast reset
-
 # roadmap (soon™)
-# - support for other settings
 # - improve checks for water and sand
 # - maybe change screenshot library, for wayland compatibility
 # - manual selecting of seeds
@@ -10,17 +7,13 @@
 ###### SETTINGS ######
 refreshTime = 0.2
 loadTime = 1
-quitCoords = (960, 500) # obsolete soon™
-#fastReset= # soon™
-#guiScale= # soon™
-#bottomLeftCorner= # soon™
+guiScale = 2
+leftPos, bottomPos = (0, 1079) # for fullscreen, 0 and your Y resolution minus 1 ; otherwise, use the small script in the README
 ######################
 
 import time
 from PIL import Image, ImageGrab
-from pynput import keyboard, mouse
-Key = keyboard.Key
-Button = mouse.Button
+from pynput.keyboard import Controller, Key
 
 def seedSuitable():
     hasWater = False
@@ -35,8 +28,7 @@ def seedSuitable():
             if hasWater and hasSand: break
     return hasWater and hasSand
 
-kb = keyboard.Controller()
-ms = mouse.Controller()
+kb = Controller()
 loadScreen = False
 alreadySearched = False
 
@@ -44,9 +36,9 @@ while True:
     time.sleep(refreshTime)
     
     # only proceed if the loading screen is on the bottom left
-    # made more adaptable soon™
-    img = ImageGrab.grab(bbox = (0, 900, 180, 1080))
-    if img.getpixel((0,0)) == (0,)*3 and img.getpixel((179,0)) == (0,)*3 and img.getpixel((0,179)) == (0,)*3 and img.getpixel((179,179)) == (0,)*3:
+    mapSize = 90 * guiScale
+    img = ImageGrab.grab(bbox = (leftPos, bottomPos-mapSize, leftPos+mapSize, bottomPos+1))
+    if img.getpixel((0,0)) == (0,)*3 and img.getpixel((mapSize-1,0)) == (0,)*3 and img.getpixel((0,mapSize-1)) == (0,)*3 and img.getpixel((mapSize-1,mapSize-1)) == (0,)*3:
         loadScreen = True
         if not alreadySearched:
             time.sleep(loadTime)
@@ -64,7 +56,6 @@ while True:
     if seedSuitable():
         kb.press(Key.esc)
     else:
-        ms.position = quitCoords
-        ms.click(Button.left)
+        kb.tap(Key.f6)
     
     alreadySearched = True
