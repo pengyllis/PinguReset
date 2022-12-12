@@ -1,9 +1,3 @@
-# roadmap (soon™)
-# - improve checks for water and sand
-# - maybe change screenshot library, for wayland compatibility
-# - manual selecting of seeds
-# - maybe add checks for village blocks?? (btw right now path blocks are considered as sand OMEGA)
-
 ###### SETTINGS ######
 refreshTime = 0.2
 loadTime = 1

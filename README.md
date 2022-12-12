@@ -5,6 +5,13 @@ An automatic resetter for single instance Minecraft speedrunning, requiring the 
 
 *Temporary problem: the program now only works with 1920x1080 resolution, fullscreen, gui scale 2, and (probably) no FastReset mod. I know this is stupid, and it is my next priority to fix this.*
 
+## Roadmap (soon™)
+
+- improve checks for water and sand
+- maybe change screenshot library, for wayland compatibility
+- manual selecting of seeds
+- maybe add checks for village blocks?? (btw right now path blocks are considered as sand OMEGA)
+
 ## How to install
 
 This uses Python with the Pillow and Pynput libraries.
