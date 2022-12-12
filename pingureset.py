@@ -2,7 +2,7 @@
 refreshTime = 0.2
 loadTime = 1
 guiScale = 2
-leftPos, bottomPos = (0, 1079) # for fullscreen, 0 and your Y resolution minus 1 ; otherwise, use the small script in the README
+leftPos, bottomPos = (0, 1079)
 ######################
 
 import time
@@ -29,7 +29,6 @@ alreadySearched = False
 while True:
     time.sleep(refreshTime)
     
-    # only proceed if the loading screen is on the bottom left
     mapSize = 90 * guiScale
     img = ImageGrab.grab(bbox = (leftPos, bottomPos-mapSize, leftPos+mapSize, bottomPos+1))
     if img.getpixel((0,0)) == (0,)*3 and img.getpixel((mapSize-1,0)) == (0,)*3 and img.getpixel((0,mapSize-1)) == (0,)*3 and img.getpixel((mapSize-1,mapSize-1)) == (0,)*3:

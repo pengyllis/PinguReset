@@ -12,7 +12,7 @@ An automatic resetter for single instance Minecraft speedrunning, requiring the 
 - manual selecting of seeds
 - maybe add checks for village blocks?? (btw right now path blocks are considered as sand OMEGA)
 
-## How to install
+## How to run
 
 This uses Python with the Pillow and Pynput libraries.
 Install Python, then open a shell and run:
@@ -20,17 +20,17 @@ Install Python, then open a shell and run:
 pip install pynput
 pip install Pillow
 ```
-(didn't test on Windows, apparently it works the same)
 
-If you do not use fullscreen, use this simple program to determine where the bottom-left corner of your instance is:
-```
-from pynput.mouse import Controller
-import time
-ms = Controller()
-time.sleep(10)
-print(ms.position)
-```
-(Run this program, align the cursor to the bottom-left of your Minecraft, wait 10 seconds, copy the result in the leftPos, bottomPos setting)
+If you do not use fullscreen, run the `bottomleftsetting.py` file to determine where the bottom-left corner of your instance is:  
+Run this program, align the cursor to the bottom-left of your Minecraft, wait 10 seconds, copy the result, paste it in the leftPos, bottomPos setting.
+
+For fullscreen, you will need to set it to 0 and your Y resolution minus 1.  
+Ex: 1920x1080 resolution in fullscreen translates to (0,1079)
+
+Modify the settings in `pingureset.py`, most importantly guiScale and leftPos, bottomPos.
+
+To use the autoresetter, simply run `pingureset.py`, the program will detect when it needs to work.  
+Just in case, do not use if you have pure black (#000000) rectangles somewhere in the bottom-left of your screen :)
 
 ## How this works
 
