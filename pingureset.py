@@ -2,6 +2,7 @@
 refreshTime = 0.2
 loadTime = 1
 guiScale = 2
+xRes, yRes = (1920, 1080)
 leftPos, bottomPos = (0, 1079)
 ######################
 
@@ -13,9 +14,11 @@ def seedSuitable():
     hasWater = False
     hasSand = False
     img = ImageGrab.grab(bbox = None)
-    for x in range(32):
-        for y in range(18):
-            if x<3 and y>14: continue
+    xGridSize, yGridSize = xRes//120, yRes//120
+    mapSize = 90 * guiScale
+    for x in range(xGridSize):
+        for y in range(yGridSize):
+            if x*120<mapSize and y*120>yRes-mapSize: continue
             r,g,b = img.getpixel((x*60, y*60))
             if r*1.2<b and g*1.2<b and r+g+b<500: hasWater = True
             elif b*1.2<r and g<r and r+g+b>340: hasSand = True
