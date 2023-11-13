@@ -1,5 +1,8 @@
 # PinguReset
 
+## NOTE: THIS ONLY HAS VERY MINOR HISTORICAL INTEREST, THERE IS ABSOLUTELY NO REASON WHY YOU SHOULD USE THIS NOW.
+## PLEASE USE [this modded WorldPreview](https://github.com/jojoe77777/WorldPreview-beach) OR [Beachfilter](https://github.com/DuncanRuns/BeachFilter-Mod) INSTEAD
+
 An automatic resetter for single instance Minecraft speedrunning, requiring the Atum and WorldPreview mods.  
 **RUNS THAT USE THIS WILL BE UNVERIFIABLE**
 
